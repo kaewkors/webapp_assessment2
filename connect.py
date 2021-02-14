@@ -1,0 +1,5 @@
+dbuser = "compDB"
+dbpass = "kw094159"
+dbhost = "comp636.cknlocmgopek.us-east-1.rds.amazonaws.com"
+dbport = "5432"
+dbname = "comp636"

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Member Add</title>
+</head>
+<body>
+    <h1>Add a Member </h1>
+    {% if memberdetails %}
+      {{ memberdetails }}<br/>
+      {{ memberdetails[0]}}<br/>
+    {% endif %}
+
+    {% if memberdetails %}
+      <form action="/attendance/update" method="POST">
+      {% else %}
+        <form action="/youth" method="POST">
+    {% endif %}
+      
+      {% if memberdetails %}
+        <input type="hidden" name="memberid" value="{{memberdetails[0]}}" />
+      {% endif %}
+        
+      
+      <label for="joindate">Join Date:</label>
+      <input type="date" id="joindate" name="joindate"
+        {% if memberdetails %}
+          value="{{memberdetails[6]}}"
+        {% endif %}/> <br/>
+
+        
+      <input type="text" id="attendancestatus" name="attendancestatus"
+        {% if memberdetails %}
+          value="{{memberdetails[9]}}"
+        {% endif %}/> <br/>
+
+      <label for="attendancestatus">Attendance status:</label>
+        <select name="attendancestatus" id="attendancestatus" size="3" multiple="multiple">
+          {% if memberdetails %}
+          value="{{memberdetails[9]}}"
+          <option value="{{Present}}" selected>{{Present}}</option>
+          <option value="{{Notified Absence}}" selected>{{Notified Absence}}</option>
+          <option value="{{Not Present}}" selected>{{Not Present}}</option>
+          {% endif %}
+        </select>
+
+      
+      <input type="Update your attendance"/>
+      <input type="Reset"/>
+      
+    </form>
+    </body>
+    </html>

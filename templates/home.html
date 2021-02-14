@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+    <p>Welcome all members</p>
+    
+    <a href="{{ url_for('youth') }}"><img src="static/images/toddlers.jpg" alt="Young Members"/></a>
+
+    <a href="{{ url_for('members') }}"><img src="static/images/adults1.jpg" alt="Adult Members"/></a>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Query Result</title>
+</head>
+<body>
+    <h1>Query Result</h1>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+    {% for col in dbcols %}
+      <th>{{col}}</th>
+    {% endfor %}
+  </tr>
+</thead>
+    {# this is a comment the line below prints the db result #}
+    <tbody>
+    {% for result in dbresult %}
+    <tr>
+      {% for entry in result %}
+       <td> {{entry}}</td>
+      {% endfor %}
+    </tr>  
+    {% endfor %}
+  </tbody>
+  </table>
+</body>
+</html>

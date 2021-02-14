@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+  {% block title %}
+    Youth Members Attendance
+  {% endblock %}
+
+    
+    {% block content %}
+    <h1>Our youth members</h1>
+       
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>{{dbcols[1]}}</th>
+          <th>{{dbcols[2]}}</th>
+          <th>{{dbcols[3]}}</th>
+          <th>{{dbcols[4]}}</th>
+          <th>{{dbcols[5]}}</th>
+          <th>{{dbcols[6]}}</th>
+          <th>{{dbcols[7]}}</th>
+          <th>{{dbcols[8]}}</th>
+          <th>{{dbcols[9]}}</th>
+          <th>{{dbcols[10]}}</th>
+          <th>{{dbcols[11]}}</th>
+
+        </tr>
+      </thead>
+      {# this is a comment the line below prints the db result #}
+      <tbody>
+        {% for result in dbresult %}
+        <tr>
+          <td><a href="/attendance/update?memberid={{result[0]}}">{{result[1]}}</a></td>
+          <td>{{result[2]}}</td>
+          <td>{{result[3]}}</td>
+          <td>{{result[4]}}</td>
+          <td>{{result[5]}}</td>
+          <td>{{result[6]}}</td>
+          <td>{{result[7]}}</td>
+          <td>{{result[8]}}</td>
+          <td>{{result[9]}}</td>
+          <td>{{result[10]}}</td>
+          <td>{{result[11]}}</td>
+        </tr>  
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endblock %}
+</html>

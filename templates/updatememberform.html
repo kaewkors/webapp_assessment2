@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+  {% block title %}
+    {{ memberdetails[1]}} {{memberdetails[2]}}'s Profile
+  {% endblock %}
+
+    {% block content %}
+    <h1>Update your profile</h1>
+
+    {%if memberdetails %}
+      <!-- {{ memberdetails }} <br/>
+      {{ memberdetails[0]}} <br/>
+      {{ memberdetails[1]}} <br/>
+      {{ memberdetails[2]}} <br/>
+      {{ memberdetails[3]}} <br/>
+      {{ memberdetails[4]}} <br/>
+      {{ memberdetails[5]}} <br/>
+      {{ memberdetails[6]}} <br/> -->
+    {% endif %}
+    
+
+    
+    <form class="row mb-3">
+  
+
+      {% if memberdetails %}
+      <form action="/member/update" method="POST">
+      {% else %}
+        <form action="/member" method="POST">
+    {% endif %}
+    
+        {% if memberdetails %}
+          <input type="hidden" name="memberid" value="{{memberdetails[0]}}"/>
+        {% endif %}
+
+      
+      <div class="col-md-4">
+        <label for="familyname" class="form-label">Family Name:</label>
+        <input type="text" id="familyname" name="familyname" class="form-control" placeholder="Family Name"
+          {% if memberdetails %}
+            value="{{memberdetails[1]}}"
+          {% endif %}/> <br/>
+      </div>
+
+      <div class="col-md-4">
+        <label for="firstname" class="form-label">First Name:</label>
+        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name"
+          {% if memberdetails %}
+            value="{{memberdetails[2]}}"
+          {% endif %}/> <br/>
+      </div>    
+      
+      <div class="col-md-2">
+        <label for="dateofbirth" class="form-label">Date of Birth:</label>
+        <input type="date" id="dateofbirth" name="dateofbirth" placeholder="dd-mm-yyyy"
+          {% if memberdetails %}
+            value="{{memberdetails[3]}}"
+          {% endif %}/> <br/>
+      </div>
+  
+      <div class="col-md-2">
+        <label for="adultleader" class="form-label">Adult Leader:</label>
+        <select id="adultleader" name="adultleader">
+          
+            {%if memberdetails %}
+            <option value="{{ true }}">{{ Yes }}</option>
+               value="{{memberdetails[4]}}"
+            {% endif %}
+        </select><br/>
+      </div>
+
+      <div class="col-md-2">
+        <label for="groupid" class="form-label">Group ID:</label>
+        <input type="text" id="groupid" name="groupid"
+          {% if memberdetails %}
+            value="{{memberdetails[5]}}"
+          {% endif %}/> <br/>
+      </div>
+
+      <div class="col-md-2">
+        <label for="joindate" class="form-label">Join Date:</label>
+        <input type="date" id="joindate" name="joindate"
+          {% if memberdetails %}
+            value="{{memberdetails[6]}}"
+          {% endif %}/> <br/>
+      </div>
+
+      <div class="col-md-1">
+        <input type="submit"/>
+        <input type="reset"/>
+      </div>
+    </form>
+    {% endblock %}
